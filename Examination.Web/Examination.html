@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>MCQ Examination System</title>
+    <base href="/" />
+
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <link href="Content/bootstrap-slate.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/ckeditor/ckeditor.js"></script>
+
+    <script src="Scripts/angular-1.6.6/angular.js"></script>
+    <script src="Scripts/angular-1.6.6/angular-route.js"></script>
+    <script src="Scripts/angular-1.6.6/angular-resource.js"></script>
+    <script src="Scripts/angular-1.6.6/angular-ckeditor.js"></script>
+    <!--Module-->
+    <script src="Scripts/Examination/examination-module.js"></script>
+    <!--Controllers&Services-->
+    <script src="Scripts/Examination/Controllers/create-question-controller.js"></script>
+    <script src="Scripts/Examination/Services/create-question-service.js"></script>
+    <script src="Scripts/Examination/Controllers/questions-controller.js"></script>
+    <script src="Scripts/Examination/Services/questions-service.js"></script>
+</head>
+<body ng-app="ExaminationModule">
+    <div class="container">
+        <div class="row">
+            <div class="navbar navbar-default">
+                <div class="navbar-header">
+                    <ul class="nav navbar-nav">
+                        <li><span class="navbar-brand">Examination</span></li>
+                    </ul>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/Examination/Questions">Multi choise Questions</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/Examination/CreateQuestion">Create MCQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div ng-view></div>
+    </div>
+</body>
+</html>

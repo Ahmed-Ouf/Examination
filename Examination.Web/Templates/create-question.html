@@ -1,0 +1,72 @@
+﻿<div class="alert alert-danger" ng-show="errors.length > 0" ng-repeat="error in errors">{{error}}</div>
+
+<div class="row">
+    <div class="col-md-10">
+        <h2>Create Question</h2>
+    </div>
+</div>
+<form name="questionForm" novalidate>
+    
+    <div class="row">
+        <div class="col-md-12">
+          
+            <div class="form-group">
+                <label>Chose Lesson</label>
+                <select ng-model="question.lesson" name="lesson" class="form-control" ng-change="lessonChane(question.lesson)" required>
+                    <optgroup ng-repeat="unit in units" label="{{ unit.name }}">
+                        <option ng-repeat="lesson in unit.lessons" value="{{ lesson }}">{{ lesson.name }}</option>
+                    </optgroup>
+                </select>
+                <!--<div class="text-danger" ng-show="questionForm.lesson.$error.required && questionForm.lesson.$dirty">Please chose lesson.</div>-->
+            </div>
+            <div class="form-group">
+                <label>Lesson Goals</label>
+                <div class="radio" ng-repeat="goal in goals">
+                    <label><input type="radio" ng-model="question.goalId" ng-value="goal.id" name="goal">{{goal.goalText}}</label>
+                </div>
+                <div class="text-danger" ng-show="questionForm.goal.$error.required && questionForm.goal.$dirty">Please chose goal</div>
+            </div>
+
+            <div class="form-group">
+                <label>Question</label>
+                <!--<input type="text" name="email" ng-model="student.email" class="form-control" required ng-pattern="/^[a-zA-Z0-9'._%+-]+@[a-zA-Z0-9-][a-zA-Z0-9.-]*\.[a-zA-Z]{2,9}$/"/>-->
+                <div ckeditor="options" name="questionBody" ng-model="question.questionBody" ready="onReady()" required></div>
+                <div class="text-danger" ng-show="questionForm.questionBody.$error.required && questionForm.questionBody.$dirty">Please enter Question.</div>
+            </div>
+
+            <div class="form-group">
+                <label>Possible answer to a question</label>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                    </span>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <input type="button" class="btn btn-default" name="addAnswer" ng-click="addPosibleAnswer(posibleAnswer)" value="Add Answers" />
+                    </span>
+                    <input type="text" name="posibleAnswer" ng-model="posibleAnswer" class="form-control" />
+                </div>
+                <div class="text-danger" ng-show="accountForm.password.$error.required && accountForm.password.$dirty">Please enter answers.</div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group">
+                <label>Answers </label>
+
+                <ul class="list-group">
+                    <li class="list-group-item" name="answers" ng-repeat="item in question.answers">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="item.correctAnswer" ng-click="updateSelection($index, question.answers)"/>
+                                {{item.answerText}}
+
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+                <div class="text-danger" ng-show="questionForm.answer.$error.required && questionForm.answer.$dirty">Please enter answers.</div>
+            </div>
+            <button class="btn btn-default" ng-disabled="questionForm.$invalid" ng-click="saveQuestion(question)">Create Question</button>
+
+        </div>
+    </div>
+</form>

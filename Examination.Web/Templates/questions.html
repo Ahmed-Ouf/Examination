@@ -1,0 +1,23 @@
+﻿<div class="row">
+    <div class="span10">
+        <h2>MCQs</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="span10">
+        <table class="table table-condensed table-hover">
+            <tr>
+                <th>Unit</th>
+                <th>Lesson</th>
+                <th>Question</th>
+                <th>Answer</th>
+            </tr>
+            <tr ng-repeat="question in questionList">
+                <td>{{question.unit}}</td>
+                <td>{{question.lesson}}</td>
+                <td>{{question.question}}</td>
+                <td>{{question.correctAnswer}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
